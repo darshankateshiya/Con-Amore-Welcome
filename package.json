@@ -40,6 +40,7 @@
     "mysql": "^2.17.1",
     "mysql-queries": "^0.2.0",
     "mysql2": "^2.1.0",
+    "nodemailer": "^6.6.5",
     "passport": "^0.4.1",
     "passport-http-bearer": "^1.0.1",
     "passport-jwt": "^4.0.0",

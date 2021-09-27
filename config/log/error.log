@@ -1,0 +1,6 @@
+{
+  message: '/subscribe:Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client',
+  level: 'error',
+  service: 'user-service',
+  timestamp: '2021-09-27T09:39:12.327Z'
+}

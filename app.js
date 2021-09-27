@@ -15,6 +15,7 @@ const path = require('path');
 var env = require('dotenv').config();
 var winston = require('winston'),
 expressWinston = require('express-winston');
+var models = require('./app/models');
 // const robots = require('express-robots-txt');
 
 const xss = require('xss-clean');
@@ -65,8 +66,71 @@ app.get('/', (req, res) => {
 });
 
 app.post("/subscribe", (req, res) => {
-    console.log(req.body);
-    res.send({ status: true, message: "done" });
+
+    var fname = req.body.fname;
+    var email = req.body.email;
+
+
+    if (!fname || !email) {
+        var api = {
+            status: false,
+            message: 'Something Missing'
+        }
+        return res.status(200).send(api);
+    }
+
+    var Subscribers = models.subscribers;
+
+    Subscribers.findAll({
+        where: {
+            subscribers_email: email
+        },
+    }).then(sub => {
+        if (sub.length == 0) {
+            var data = {
+                subscribers_name:fname,
+                subscribers_email:email
+            }
+            Subscribers.create(data).then(addCustomer => {
+                if (addCustomer.length != 0) {
+                    var api = {
+                        status: true,
+                        message: 'Successfully Subscribed'
+                    }
+                    return res.status(200).send(api);
+                } else {
+                    var api = {
+                        status: false,
+                        message: 'Something Wrong'
+                    }
+                    return res.status(200).send(api);
+                }
+
+            }).catch(function (err) {
+                Logger.error(req.originalUrl + ':' + err);
+                var api = {
+                    status: false,
+                    message: 'Something Wrong!!'
+                }
+                return res.status(500).send(api);
+            });
+        } else {
+            var api = {
+                status: false,
+                message: 'This Email Already Subscribed!'
+            }
+            return res.status(200).send(api);    
+        }
+    }).catch(function (err) {
+        Logger.error(req.originalUrl + ':' + err);
+        var api = {
+            status: false,
+            message: 'Something Wrong!!'
+        }
+        return res.status(500).send(api);
+    });
+
+
 });
 
 app.use(expressWinston.errorLogger({
@@ -79,7 +143,7 @@ app.use(expressWinston.errorLogger({
     )
 }));
 
-const port = process.env.PORT || 1000;
+const port = process.env.PORT || 8888;
 
 var server =  app.listen(port,() =>{
     console.log('Server start in ' + port);
