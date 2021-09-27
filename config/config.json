@@ -30,13 +30,13 @@
  
     "production": {
  
-        "username": "studio21",
+        "username": "admin",
  
-        "password": "",
+        "password": "con_amore_97_admin",
  
         "database": "con_amore_welcome",
  
-        "host": "database-1.cer7vfwfvvyb.ap-south-1.rds.amazonaws.com",
+        "host": "database-1.cozr9jbu6gdl.ap-south-1.rds.amazonaws.com",
  
         "dialect": "mysql"
  
