@@ -1,0 +1,45 @@
+{
+  
+    "development": {
+ 
+        "username": "root",
+ 
+        "password": "",
+ 
+        "database": "con_amore_welcome",
+ 
+        "host": "127.0.0.1",
+ 
+        "dialect": "mysql"
+ 
+    },
+ 
+    "test": {
+ 
+        "username": "admin",
+ 
+        "password": "darshan8112",
+ 
+        "database": "con_amore_welcome",
+ 
+        "host": "restoratest.c0utaq1nntkz.ap-south-1.rds.amazonaws.com",
+ 
+        "dialect": "mysql"
+ 
+    },
+ 
+    "production": {
+ 
+        "username": "studio21",
+ 
+        "password": "",
+ 
+        "database": "con_amore_welcome",
+ 
+        "host": "database-1.cer7vfwfvvyb.ap-south-1.rds.amazonaws.com",
+ 
+        "dialect": "mysql"
+ 
+    }
+ 
+}
