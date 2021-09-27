@@ -44,6 +44,20 @@ app.set("view engine", "ejs");
 //xss-clear
 app.use(xss());
 
+//models
+var models = require('./app/models');
+
+//Sync Database
+models.sequelize.sync().then(function() {
+ 
+    console.log('Nice! Database looks fine')
+ 
+}).catch(function(err) {
+ 
+    console.log(err, "Something went wrong with the Database Update!")
+ 
+});
+
 
 // Route View List
 app.get('/', (req, res) => {
