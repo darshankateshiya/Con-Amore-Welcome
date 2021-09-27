@@ -12,7 +12,6 @@ var config = require('./../../config/config.json')[env];
 const sequelize = new Sequelize(config.database, config.username, config.password, {
     host: config.host,
     dialect: 'mysql',
-    port: 3308,
     pool: {
         max: 5,
         min: 0,
