@@ -50,6 +50,11 @@ app.get('/', (req, res) => {
     res.render("index");
 });
 
+app.post("/subscribe", (req, res) => {
+    console.log(req.body);
+    res.send({ status: true, message: "done" });
+});
+
 app.use(expressWinston.errorLogger({
     transports: [
              new winston.transports.File({ filename: './config/log/express-log/error.log', level: 'error' }),
