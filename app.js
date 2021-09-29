@@ -66,7 +66,6 @@ app.get('/', (req, res) => {
 });
 
 app.post("/subscribe", (req, res) => {
-
     var fname = req.body.fname;
     var email = req.body.email;
 
