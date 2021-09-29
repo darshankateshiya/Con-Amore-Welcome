@@ -253,7 +253,7 @@ $(function() {
         return;
       }
 
-      console.log("done");
+      $("#errorInput").text("");
       var data = { fname, email };
       
       $.ajax({
@@ -261,7 +261,8 @@ $(function() {
         type: "POST",
         data: data,
         success: function (result) {
-            if (result.status) {
+          if (result.status) {
+              $("#errorInput").text("");
               $('.notify').find('.form').addClass('is-hidden');
               $('.notify').find('.subscription-ok').addClass('is-visible');
               setTimeout(function() {
@@ -271,6 +272,13 @@ $(function() {
                 $('.notify-form').trigger("reset");
               }, 5000);
             } else {
+              if (result.code) {
+                if (result.code == 600) {
+                  $("#errorInput").text("This Email Already Subscribed");
+                  return
+                }
+              }
+              $("#errorInput").text("");
               $('.notify').find('.form').addClass('is-hidden');
               $('.notify').find('.subscription-error').addClass('is-visible');
               setTimeout(function() {
@@ -282,6 +290,8 @@ $(function() {
             }
         },
         error: function (error) {
+        
+          $("#errorInput").text("");
           $('.notify').find('.form').addClass('is-hidden');
           $('.notify').find('.subscription-error').addClass('is-visible');
           setTimeout(function() {

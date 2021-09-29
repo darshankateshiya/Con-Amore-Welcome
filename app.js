@@ -116,7 +116,8 @@ app.post("/subscribe", (req, res) => {
         } else {
             var api = {
                 status: false,
-                message: 'This Email Already Subscribed!'
+                message: 'This Email Already Subscribed!',
+                code:600
             }
             return res.status(200).send(api);    
         }
