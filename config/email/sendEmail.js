@@ -5,7 +5,9 @@ var ejs = require("ejs");
 
 // var transporter = nodemailer.createTransport({
 //     host: 'smtpout.secureserver.net',
+//     name:   'www.conamorejewels.com',
 //     port: 465,
+//     secure: true,
 //     auth: {
 //         user: 'contact@conamorejewels.com',
 //         pass: 'Dheeraj&Eddhita'
@@ -14,10 +16,10 @@ var ejs = require("ejs");
 
 var transporter = nodemailer.createTransport({
     host: 'smtpout.secureserver.net',
-    port: 465,
+    port: 587,
     auth: {
-        user: 'info@infocubics.com',
-        pass: 'infocubics@1997'
+        user: 'info@instantmenu.co',
+        pass: 'instantmenu@2021'
     }
 });
 
@@ -38,7 +40,7 @@ if (err) {
         from: '"Tester" testmail@zoho.com',
         to: "darshan.kateshiya22@gmail.com",
         subject: 'Hello, world',
-        html: data
+        // html: data
     };
     // console.log("html data ======================>", mainOptions.html);
     transporter.sendMail(mainOptions, function (err, info) {
